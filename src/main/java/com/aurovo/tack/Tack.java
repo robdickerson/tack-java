@@ -6,12 +6,17 @@ public class Tack {
 
     private String url;
     
+    private TackHttp tackHttp;
+    
     /**
      * Constructor takes the URL of the API
      * @param url 
      */
     public Tack(String url) {        
         this.url = url;
+        
+        //Define the API URL
+        tackHttp = new TackHttp("http://localhost:8084/tack-api/");
     }
 
     /**
@@ -21,10 +26,19 @@ public class Tack {
      */
     public Message fetch(Message msg) {
         
-        //TODO: Execute GET API call
-        // /messages/:id
+        Message respmsg = null;
         
-        return new Message();
+        //TODO: Execute GET API call
+        try {
+            
+            respmsg = tackHttp.get(msg.getId().toString());
+            
+        } catch (Exception e) {
+            //TODO: Handle exceptions
+        }
+        
+        
+        return respmsg;
     }
     
     /**
@@ -32,10 +46,10 @@ public class Tack {
      * @param msg
      * @return 
      */
-    public ObjectId save(Message msg) {
+    public Message save(Message msg) {
         
         
-        return new ObjectId();
+        return new Message();
     }
     
     /**

@@ -21,11 +21,11 @@ public class TackMain {
         msg.setState(Message.STATE.PROCESSING);
         
         //Save the message
-        ObjectId id = tack.save(new Message());
+        Message saveMsg = tack.save(new Message());
         
         //Fetch the message
         Message fetchmsg = new Message();
-        fetchmsg.setId(id);
+        fetchmsg.setId(saveMsg.getId());
         
         msg = tack.fetch(fetchmsg);
                 
